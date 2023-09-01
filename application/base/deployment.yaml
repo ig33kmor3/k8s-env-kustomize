@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik-whoami
+  labels:
+    app: traefik-whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-whoami
+  template:
+    metadata:
+      labels:
+        app: traefik-whoami
+    spec:
+      containers:
+      - name: traefik-whoami
+        image: traefik/whoami
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
