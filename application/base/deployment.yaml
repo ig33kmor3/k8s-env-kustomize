@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: traefik-whoami
+  name: eks-sdl-demo
   labels:
-    app: traefik-whoami
+    app: eks-sdl-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: traefik-whoami
+      app: eks-sdl-demo
   template:
     metadata:
       labels:
-        app: traefik-whoami
+        app: eks-sdl-demo
     spec:
       containers:
-      - name: traefik-whoami
-        image: traefik/whoami
+      - name: eks-sdl-demo
+        image: public.ecr.aws/h5r1n5l4/eks-razor-demo:v0.0.1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           limits:
             memory: "128Mi"
